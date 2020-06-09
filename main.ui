@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>228</width>
-    <height>356</height>
+    <width>269</width>
+    <height>375</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -40,8 +40,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>224</width>
-         <height>286</height>
+         <width>265</width>
+         <height>305</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
@@ -125,7 +125,7 @@
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>208</width>
+                    <width>249</width>
                     <height>84</height>
                    </rect>
                   </property>
@@ -260,8 +260,8 @@
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>208</width>
-                    <height>126</height>
+                    <width>249</width>
+                    <height>145</height>
                    </rect>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_11">
@@ -332,21 +332,14 @@
                      </item>
                      <item row="1" column="0">
                       <layout class="QGridLayout" name="gridLayout_6">
-                       <item row="0" column="0">
+                       <item row="1" column="0">
                         <widget class="QLabel" name="label_4">
                          <property name="text">
                           <string>File Name:</string>
                          </property>
                         </widget>
                        </item>
-                       <item row="0" column="1">
-                        <widget class="QLineEdit" name="tbConnectClient_2">
-                         <property name="text">
-                          <string>recv_file.txt</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="1" column="0">
+                       <item row="2" column="0">
                         <widget class="QLabel" name="label_3">
                          <property name="text">
                           <string>Host Name:</string>
@@ -354,9 +347,30 @@
                         </widget>
                        </item>
                        <item row="1" column="1">
-                        <widget class="QLineEdit" name="tbConnectClient">
+                        <widget class="QLineEdit" name="tbClientFileName">
+                         <property name="text">
+                          <string>recv_file.txt</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="1">
+                        <widget class="QLineEdit" name="tbClientHostName">
                          <property name="text">
                           <string>192.168.0.16</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="label_5">
+                         <property name="text">
+                          <string>Directory:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QLineEdit" name="tbClientFileDir">
+                         <property name="readOnly">
+                          <bool>true</bool>
                          </property>
                         </widget>
                        </item>
@@ -386,7 +400,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>228</width>
+     <width>269</width>
      <height>21</height>
     </rect>
    </property>

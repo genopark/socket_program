@@ -28,6 +28,7 @@ class Ui(QtWidgets.QMainWindow):
         self.tbServerIP = self.findChild(QtWidgets.QLineEdit, 'tbServerIP')
         self.btnConnectClient = self.findChild(QtWidgets.QPushButton, 'btnConnectClient')
         self.tbConnectClient = self.findChild(QtWidgets.QLineEdit, 'tbConnectClient')
+        self.tbClientFileDir = self.findChild(QtWidgets.QLineEdit, 'tbClientFileDir')
         self.btnSelectSendFile = self.findChild(QtWidgets.QPushButton, 'btnSelectSendFile')
         self.btnSetRecvFileDir = self.findChild(QtWidgets.QPushButton, 'btnSetRecvFileDir')
 
@@ -55,14 +56,12 @@ class Ui(QtWidgets.QMainWindow):
         f = QFileDialog.getOpenFileName(self, "Select File")
         file_dir = str(f[0])
         path, filename = os.path.split(file_dir)
-        self.server.file_dir = path
-        self.server.file_name = filename
+        self.server.setFile(path, filename)
 
     def btnSetRecvFileDirPressed(self):
-        file = str(QFileDialog.getExistingDirectory(self, "Select Directory"))
-        print(file)
-
-        self.client.setFileDir(file)
+        f = str(QFileDialog.getExistingDirectory(self, "Select Directory"))
+        self.client.setFileDir(str(f))
+        self.tbClientFileDir.setText(str(f))
 
     def closeApp(self):
         app.quit()
