@@ -3,9 +3,9 @@ import logging
 import threading
 import time
 from PyQt5 import QtWidgets, uic
-from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QFileDialog
+from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QFileDialog, QMessageBox
 import socket
-from source import socketcontrol, threadcontrol
+from source import socketcontrol, threadcontrol, qtcontrol
 
 class Ui(QtWidgets.QMainWindow):
     def __init__(self, *args, **kwargs):
@@ -48,9 +48,13 @@ class Ui(QtWidgets.QMainWindow):
         self.statusBar().showMessage('File sent successfully!')
 
     def btnConnectClientPressed(self):
-        self.client.setIP(str(self.tbConnectClient.text()), 8080)
-        m_recv_dir = 'D:\\python_projects\\socket_program\\downloads\\sample.txt'
-        self.client.connectClient(m_recv_dir)
+        if not self.tbClientFileDir.text() == "":
+            self.client.setIP(str(self.tbConnectClient.text()), 8080)
+            m_recv_dir = 'D:\\python_projects\\socket_program\\downloads\\sample.txt'
+            self.client.connectClient(m_recv_dir)
+        else:
+            x = qtcontrol.QMsgCustom(self)
+            x.showErrorMessage("No Input", "Input textbox cannot be empty!")
 
     def btnSelectSendFilePressed(self):
         f = QFileDialog.getOpenFileName(self, "Select File")
@@ -77,6 +81,18 @@ class Ui(QtWidgets.QMainWindow):
         self.btnConnectClient.clicked.connect(self.btnConnectClientPressed)
         self.btnSelectSendFile.clicked.connect(self.btnSelectSendFilePressed)
         self.btnSetRecvFileDir.clicked.connect(self.btnSetRecvFileDirPressed)
+
+class QMsgCustom(QMessageBox):
+    def __init__(self, *args, **kwargs):
+        super(QMsgCustom, self).__init__(*args, **kwargs)
+
+    def showErrorMessage(self, msg="", info_msg = ""):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Critical)
+        msg.setText(msg)
+        msg.setInformativeText(info_msg)
+        msg.setWindowTitle("Error")
+        msg.exec_()
 
 # execute qt gui
 app = QtWidgets.QApplication(sys.argv)

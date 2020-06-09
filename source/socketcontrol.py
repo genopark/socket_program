@@ -37,7 +37,8 @@ class SockControl(socket.socket):
         # connection made by client
         conn, addr = self.accept()
         print(addr, " has connected to the server")
-        filename = 'D:\\python_projects\\serverclient\\server\\sample.txt'
+        filename = self.file_dir + "\\" + self.file_name
+        #filename = 'D:\\python_projects\\serverclient\\server\\sample.txt'
         file = open(filename, 'rb')
         file_data = file.read(1024)
         conn.send(file_data)
